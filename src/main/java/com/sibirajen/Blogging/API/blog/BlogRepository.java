@@ -1,4 +1,4 @@
-package com.sibirajen.Blogging.API.repo;
+package com.sibirajen.Blogging.API.blog;
 
 import com.sibirajen.Blogging.API.model.Blog;
 import org.springframework.data.repository.CrudRepository;
