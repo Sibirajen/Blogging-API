@@ -1,11 +1,16 @@
 package com.sibirajen.Blogging.API.blog;
 
+import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.sibirajen.Blogging.API.model.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 @RestController
@@ -31,8 +36,16 @@ public class BlogComponent {
                 .orElseGet( () -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+    @GetMapping("/posts")
+    public ResponseEntity<List<BlogResponse>> getBlogs(){
+        List<BlogResponse> responseList = repo.findAll().stream()
+                .map(BlogResponseMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(responseList);
+    }
+
     @DeleteMapping("/posts/{id}")
-    public ResponseEntity<Object> deleteBlogById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBlogById(@PathVariable Long id){
         if(!repo.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
