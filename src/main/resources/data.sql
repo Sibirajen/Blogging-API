@@ -1,41 +1,41 @@
 -- Insert sample tags
-INSERT INTO TAGS (ID, TAG) VALUES (1, 'Spring Boot');
-INSERT INTO TAGS (ID, TAG) VALUES (2, 'Java');
-INSERT INTO TAGS (ID, TAG) VALUES (3, 'JPA');
-INSERT INTO TAGS (ID, TAG) VALUES (4, 'Docker');
-INSERT INTO TAGS (ID, TAG) VALUES (5, 'MySQL');
-INSERT INTO TAGS (ID, TAG) VALUES (6, 'Backend');
+INSERT INTO TAGS (ID, TAG) VALUES (10, 'Spring Boot');
+INSERT INTO TAGS (ID, TAG) VALUES (20, 'Java');
+INSERT INTO TAGS (ID, TAG) VALUES (30, 'JPA');
+INSERT INTO TAGS (ID, TAG) VALUES (40, 'Docker');
+INSERT INTO TAGS (ID, TAG) VALUES (50, 'MySQL');
+INSERT INTO TAGS (ID, TAG) VALUES (60, 'Backend');
 
 -- Insert sample blogs
 INSERT INTO BLOGS (ID, TITLE, CONTENT, CATEGORY, CREATED_AT, UPDATED_AT) VALUES
-(1, 'Getting Started with Spring Boot', 'This is a beginner guide for Spring Boot.', 'Programming', NOW(), NOW());
+(10, 'Getting Started with Spring Boot', 'This is a beginner guide for Spring Boot.', 'Programming', NOW(), NOW());
 
 INSERT INTO BLOGS (ID, TITLE, CONTENT, CATEGORY, CREATED_AT, UPDATED_AT) VALUES
-(2, 'Understanding JPA Relationships', 'Let’s dive into OneToMany and ManyToMany.', 'Database', NOW(), NOW());
+(20, 'Understanding JPA Relationships', 'Let’s dive into OneToMany and ManyToMany.', 'Database', NOW(), NOW());
 
 INSERT INTO BLOGS (ID, TITLE, CONTENT, CATEGORY, CREATED_AT, UPDATED_AT) VALUES
-(3, 'Deploying Spring Boot with Docker', 'Steps to containerize your Spring Boot app using Docker.', 'DevOps', NOW(), NOW());
+(30, 'Deploying Spring Boot with Docker', 'Steps to containerize your Spring Boot app using Docker.', 'DevOps', NOW(), NOW());
 
 INSERT INTO BLOGS (ID, TITLE, CONTENT, CATEGORY, CREATED_AT, UPDATED_AT) VALUES
-(4, 'Optimizing MySQL Queries', 'Learn how to write efficient queries for large databases.', 'Database', NOW(), NOW());
+(40, 'Optimizing MySQL Queries', 'Learn how to write efficient queries for large databases.', 'Database', NOW(), NOW());
 
 INSERT INTO BLOGS (ID, TITLE, CONTENT, CATEGORY, CREATED_AT, UPDATED_AT) VALUES
-(5, 'Java Tips for Backend Developers', 'Here are some lesser-known but powerful tips for Java backend devs.', 'Programming', NOW(), NOW());
+(50, 'Java Tips for Backend Developers', 'Here are some lesser-known but powerful tips for Java backend devs.', 'Programming', NOW(), NOW());
 
 -- Blog <-> Tag mapping
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (1, 1); -- Spring Boot
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (1, 2); -- Java
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (1, 6); -- Backend
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (10, 10); -- Spring Boot
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (10, 20); -- Java
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (10, 60); -- Backend
 
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (2, 3); -- JPA
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (2, 2); -- Java
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (2, 6); -- Backend
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (20, 30); -- JPA
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (20, 20); -- Java
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (20, 60); -- Backend
 
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (3, 1); -- Spring Boot
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (3, 4); -- Docker
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (30, 10); -- Spring Boot
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (30, 40); -- Docker
 
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (4, 5); -- MySQL
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (4, 6); -- Backend
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (40, 50); -- MySQL
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (40, 60); -- Backend
 
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (5, 2); -- Java
-INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (5, 6); -- Backend
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (50, 20); -- Java
+INSERT INTO BLOG_TAG_MAPPING (BLOG_ID, TAG_ID) VALUES (50, 60); -- Backend
