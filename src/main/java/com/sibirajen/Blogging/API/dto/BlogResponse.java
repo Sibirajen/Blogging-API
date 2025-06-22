@@ -1,7 +1,5 @@
-package com.sibirajen.Blogging.API.blog;
+package com.sibirajen.Blogging.API.dto;
 
-import com.sibirajen.Blogging.API.model.Blog;
-import com.sibirajen.Blogging.API.model.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
