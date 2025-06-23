@@ -5,6 +5,7 @@ import com.sibirajen.Blogging.API.dto.BlogResponse;
 import com.sibirajen.Blogging.API.model.Blog;
 import com.sibirajen.Blogging.API.model.Tag;
 import com.sibirajen.Blogging.API.tag.TagRepository;
+import com.sibirajen.Blogging.API.tag.TagResolver;
 
 import java.util.List;
 
@@ -16,17 +17,14 @@ public class BlogMapper {
                     .title(blog.getTitle())
                     .content(blog.getContent())
                     .category(blog.getCategory())
-                    .tags(blog.getTags().stream().map(Tag::getTag).toList())
+                    .tags(TagResolver.toStrList(blog.getTags()))
                     .createdAt(blog.getCreatedAt())
                     .updatedAt(blog.getCreatedAt())
                     .build();
     }
 
     public static Blog toBlog(BlogRequest blogRequest, TagRepository repo){
-        List<Tag> tagList = blogRequest.getTags().stream()
-                .map( name -> repo.findByTag(name)
-                        .orElseGet( () -> repo.save(new Tag(name))))
-                .toList();
+        List<Tag> tagList = TagResolver.toTagList(blogRequest.getTags(), repo);
 
         return Blog.builder()
                 .title(blogRequest.getTitle())
