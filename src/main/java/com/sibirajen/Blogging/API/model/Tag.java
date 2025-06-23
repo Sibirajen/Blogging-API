@@ -20,12 +20,12 @@ import java.util.List;
 @Table(name = "TAGS")
 public class Tag extends BaseEntity{
     @Column(name = "TAG", nullable = false)
-    private String tag;
+    private String name;
 
     @ManyToMany(mappedBy = "tags")
     private List<Blog> blogs = new ArrayList<>();
 
-    public Tag(String tag) {
-        this.tag = tag;
+    public Tag(String name) {
+        this.name = name;
     }
 }
