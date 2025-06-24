@@ -44,10 +44,20 @@ public class BlogComponent {
     }
 
     @GetMapping("/posts")
-    public ResponseEntity<List<BlogResponse>> getBlogs(){
-        List<BlogResponse> responseList = blogRepo.findAll().stream()
+    public ResponseEntity<List<BlogResponse>> getBlogs(@RequestParam(required = false) String term){
+        List<Blog> blogList;
+
+        if (term == null || term.equals("*")){
+            blogList = blogRepo.findAll();
+        }
+        else {
+            blogList = blogRepo.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCaseOrCategoryContainingIgnoreCase(term, term, term);
+        }
+
+        List<BlogResponse> responseList = blogList.stream()
                 .map(BlogMapper::toBlogResponse)
                 .toList();
+
         return ResponseEntity.ok(responseList);
     }
 
